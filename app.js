@@ -1,6 +1,7 @@
 // Import dependencies
 const express = require("express");
 const youtubedl = require("youtube-dl");
+const path = require('path');
 
 const app = express();
 const port = 5000;
@@ -44,7 +45,8 @@ app.get("/", async (req, res) => {
         console.log(__dirname);
         // Await the downloader
         const output = await download;
-        res.download(__dirname +'/Video',output);
+        var fileLocation = path.join('./uploads',output);
+        res.download(fileLocation, output);
         // Send response
         res.status(200).send({
             ok: true,
