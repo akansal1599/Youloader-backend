@@ -44,7 +44,7 @@ app.get("/", async (req, res) => {
         console.log(__dirname);
         // Await the downloader
         const output = await download;
-
+        res.download(__dirname +'/Video',output);
         // Send response
         res.status(200).send({
             ok: true,
