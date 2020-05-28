@@ -29,9 +29,10 @@ app.get("/", async (req, res) => {
 
     // How to Write a JavaScript Promise - https://www.freecodecamp.org/news/how-to-write-a-javascript-promise-4ed8d44292b8
     const download = new Promise(function (resolve, reject) {
-
+        console.log(__dirname);
+        console.log(process.cwd());
         // Download the YouTube video
-        youtubedl.exec(req.query.url, ["--format", "bestvideo[height<=1080]+bestaudio/best[height<=1080]"], { cwd: __dirname },
+        youtubedl.exec(req.query.url, ["--format=bestvideo[height<=1080]+bestaudio/best[height<=1080]","--output=~/Desktop/%(title)s.%(ext)s"], { cwd: __dirname },
             (err, output) => {
                 if (err) reject(err);
 
@@ -63,4 +64,4 @@ app.get("/", async (req, res) => {
 
 });
 // () => console.log(`Downloader listening at http://localhost:${port}`)
-app.listen(process.env.PORT || port);
+app.listen( port);
