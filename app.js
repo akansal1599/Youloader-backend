@@ -37,7 +37,7 @@ app.get("/", async (req, res) => {
         // Download the YouTube video
         // console.log(path)
         // var fileLocation = path.join('./uploads',file);
-        youtubedl.exec(req.query.url, ["--format=bestvideo[height<=1080]+bestaudio/best[height<=1080]",`--output=~/${pathObj}/Youloader/%(title)s.%(ext)s)`], { cwd: __dirname },
+        youtubedl.exec(req.query.url, ["--format=bestvideo[height<=1080]+bestaudio/best[height<=1080]",`--output=~/${pathObj}/%(title)s.%(ext)s)`], { cwd: __dirname },
             (err, output) => {
                 if (err) reject(err);
                 file=output;
